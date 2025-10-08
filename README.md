@@ -175,20 +175,35 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 ## STM 32 CUBE PROGRAM :
 ```
 NAME : Lathikeshwaran J
-REF NO : 212222230072
+REG NO : 212222230072
 ```
 ```C
 #include "main.h"
-  #include "lcd.h"
+#include "lcd.h"
+Lcd_PortType ports[]={GPIOA,GPIOA,GPIOA,GPIOA};
+Lcd_PinType pins[]={GPIO_PIN_3,GPIO_PIN_2,GPIO_PIN_1,GPIO_PIN_0};
+Lcd_HandleTypeDef lcd;
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
   MX_GPIO_Init();
-  Lcd_PortType ports[] = {GPIOA,GPIOA,GPIOA,GPIOA};
-  Lcd_PinType pins[]={GPIO_PIN_3,GPIO_PIN_2,GPIO_PIN_1,GPIO_PIN_0};
-  Lcd_HandleTypeDef lcd;
-  lcd = Lcd_create(ports,pins,GPIOB,GPIO_PIN_0,GPIOB,GPIO_PIN_1,LCD_4_BIT_MODE);
-  Lcd_cursor(&lcd, 0,0);
-  Lcd_string(&lcd,"AIDS");
-  Lcd_cursor(&lcd, 1,0);
-  Lcd_string(&lcd,"Lathik");
+
+  lcd=Lcd_create(ports,pins,GPIOB,GPIO_PIN_0,GPIOB,GPIO_PIN_1,LCD_4_BIT_MODE);
+  while (1)
+  {
+    lcd_display();
+  }
+}
+
+void lcd_display()
+{
+	Lcd_cursor(&lcd,1,0);
+	Lcd_string(&lcd,"Lathik");
+}
 
 ```
 
@@ -198,7 +213,8 @@ REF NO : 212222230072
 
 
  AFTER:
-![Screenshot 2024-04-16 141350](https://github.com/Mathiofficial/EXPERIMENT--04-INTERFACING-AN16X2-LCD-DISPLAY-WITH-ARM-/assets/118787327/9a126be6-e8d0-4a26-beb2-7a712757f406)
+<img width="715" height="666" alt="Screenshot 2025-10-04 141302" src="https://github.com/user-attachments/assets/46943055-27d5-4cdd-b66b-97e0feef4063" />
+
 
  
  
