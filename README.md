@@ -219,7 +219,8 @@ void lcd_display()
  
  
  ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE): 
-![Screenshot 2024-04-16 195121](https://github.com/Mathiofficial/EXPERIMENT--04-INTERFACING-AN16X2-LCD-DISPLAY-WITH-ARM-/assets/118787327/19ea965e-0c11-4936-b242-01242f479281)
+<img width="858" height="752" alt="image" src="https://github.com/user-attachments/assets/4073cb5d-72dd-4bc6-996d-492ae4acd5f7" />
+
 
 
  
