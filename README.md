@@ -180,10 +180,6 @@ REG NO : 212222230072
 ```C
 #include "main.h"
 #include "lcd.h"
-Lcd_PortType ports[]={GPIOA,GPIOA,GPIOA,GPIOA};
-Lcd_PinType pins[]={GPIO_PIN_3,GPIO_PIN_2,GPIO_PIN_1,GPIO_PIN_0};
-Lcd_HandleTypeDef lcd;
-
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 int main(void)
@@ -191,20 +187,23 @@ int main(void)
   HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
+  Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA };
+  Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
+  Lcd_HandleTypeDef lcd;
+  lcd = Lcd_create(ports, pins, GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, LCD_4_BIT_MODE);
+  Lcd_cursor(&lcd, 0,1);
+  Lcd_string(&lcd, "karthiga M");
 
-  lcd=Lcd_create(ports,pins,GPIOB,GPIO_PIN_0,GPIOB,GPIO_PIN_1,LCD_4_BIT_MODE);
   while (1)
   {
-    lcd_display();
+	  for ( int x = 1; x <= 200 ; x++ )
+	 	  {
+		  Lcd_cursor(&lcd, 1,7);
+	 	  Lcd_int(&lcd, x);
+	 	  HAL_Delay (1000);
+	 	  }
   }
 }
-
-void lcd_display()
-{
-	Lcd_cursor(&lcd,1,0);
-	Lcd_string(&lcd,"Lathik");
-}
-
 ```
 
 ## Output screen shots of proteus  :
